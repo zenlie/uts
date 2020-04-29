@@ -17,12 +17,12 @@ if ($secret_key != '') {
     (count($data) != 0) ? $authentication = true : $authentication = false;
 }
 if (!$authentication) {
-    // http_response_code(401);
-    // $arrResult = array(
-    //     'result' => false,
-    //     'code' => 401,
-    //     'message' => 'Secret Key is invalid'
-    // );
-    // echo json_encode($arrResult);
-    // exit();
+    http_response_code(401);
+    $arrResult = array(
+        'result' => false,
+        'code' => 401,
+        'message' => 'Secret Key is invalid'
+    );
+    echo json_encode($arrResult);
+    exit();
 }

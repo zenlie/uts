@@ -24,28 +24,65 @@ Class ApiBarang extends CI_Controller{
      public function create()
      {
          $data = $this->Model_barang->add();
+
+         http_response_code(500);
+         $arrResult = array(
+            'result' => false,
+            'code' => 500,
+            'message' => 'Internal Server Error'
+         );
+
          if ($data == 1) {
             http_response_code(201);
+            $arrResult = array(
+               'result' => true,
+               'code' => 201,
+               'message' => 'Data Was Created'
+            );         
+   
          }
-         echo json_encode($data);
+         echo json_encode($arrResult);
      }
 
-     public function update()
-     {
-        $data = $this->Model_barang->update();
-        if ($data == 1) {
-        	http_response_code(200);
-        }
-        echo json_encode($data);
-     }
+      public function update()
+      {
+         $data = $this->Model_barang->update();
+         http_response_code(500);
+         $arrResult = array(
+            'result' => false,
+            'code' => 500,
+            'message' => 'Internal Server Error'
+         );
+         if ($data == 1) {
+            http_response_code(200);
+            $arrResult = array(
+               'result' => true,
+               'code' => 200,
+               'message' => 'Data Was Updated'
+            );
+         }
+         echo json_encode($data);
+      }
 
      public function delete()
      {
-        $data = $this->Model_barang->delete();
-        if ($data == 1) {
-        	http_response_code(202);
-        }
-        echo json_encode($data);
+         http_response_code(500);
+         $arrResult = array(
+            'result' => false,
+            'code' => 500,
+            'message' => 'Internal Server Error'
+         );
+         $data = $this->Model_barang->delete();
+         if ($data == 1) {
+            http_response_code(202);
+            $arrResult = array(
+               'result' => true,
+               'code' => 202,
+               'message' => 'Data Was Deleted'
+            );
+
+         }
+         echo json_encode($data);
      }
 }
 
