@@ -29,24 +29,23 @@ Class Model_Barang extends CI_Model{
         return $data;
     }
 
-    public function update()
+    public function update($id_barang, $nm_barang, $stok_barang, $harga_barang)
     {
         $data=[
-            'nm_barang' => $this->input->post('nm_barang'),
-            'stok_barang' => $this->input->post('stok_barang'),
-            'harga_barang' => $this->input->post('harga_barang'),
+            'nm_barang' => $nm_barang,
+            'stok_barang' => $stok_barang,
+            'harga_barang' => $harga_barang,
 
          ];
-         $id_barang=$this->input->post('id_barang');
          $this->db->where('id_barang',$id_barang);
          return $this->db->update('tbl_barang',$data);
 
     }
 
-    public function delete()
+    public function delete($id_barang)
     {
 
-        $id_barang = $this->input->post('id_barang');
+        $id_barang = $id_barang;
         $this->db->where('id_barang',$id_barang);
         return $this->db->delete('tbl_barang');
 

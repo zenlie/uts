@@ -48,14 +48,24 @@ Class ApiBarang extends CI_Controller{
              break;
 
           case 'PUT':
-               $data = $this->Model_barang->update();
+               $putfp = fopen('php://input', 'r');
+               $putdata = '';
+               while($data = fread($putfp, 1024))
+                  $putdata .= $data;
+               fclose($putfp);
+
+               $var = json_decode($putdata);
+               foreach ($var as $key => $value) {
+                  $$key = $value;
+               }
                http_response_code(404);
                $arrResult = array(
                   'result' => false,
                   'code' => 404,
                   'message' => 'Data Not Found'
                );
-               $barang = $this->Model_barang->show_one_barang($this->input->post('id_barang'))->result();         
+               $barang = $this->Model_barang->show_one_barang($id_barang)->result();
+               $data = $this->Model_barang->update($id_barang, $nm_barang, $stok_barang, $harga_barang);
                if (count($barang) == 1) {
                   http_response_code(200);
                   $arrResult = array(
@@ -68,16 +78,26 @@ Class ApiBarang extends CI_Controller{
 
              break;
 
-          case 'Delete':
+          case 'DELETE':
+               $putfp = fopen('php://input', 'r');
+               $putdata = '';
+               while($data = fread($putfp, 1024))
+                  $putdata .= $data;
+               fclose($putfp);
+               $var = json_decode($putdata);
+               foreach ($var as $key => $value) {
+                  $$key = $value;
+               }
+
                http_response_code(404);
                $arrResult = array(
                   'result' => false,
                   'code' => 404,
                   'message' => 'Data Not Found'
                );
-               $barang = $this->Model_barang->show_one_barang($this->input->post('id_barang'))->result();         
+               $barang = $this->Model_barang->show_one_barang($id_barang)->result();         
                if (count($barang) == 1) {
-                  $data = $this->Model_barang->delete();
+                  $data = $this->Model_barang->delete($id_barang);
                   http_response_code(202);
                   $arrResult = array(
                      'result' => true,
