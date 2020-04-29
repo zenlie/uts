@@ -23,11 +23,11 @@ Class ApiBarang extends CI_Controller{
 
      public function create()
      {
-        $data = $this->Model_barang->add();
-        if ($data == 1) {
-        	http_response_code(201);
-        }
-        echo json_encode($data);
+         $data = $this->Model_barang->add();
+         if ($data == 1) {
+            http_response_code(201);
+         }
+         echo json_encode($data);
      }
 
      public function update()

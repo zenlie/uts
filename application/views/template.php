@@ -24,6 +24,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
+  <input type="hidden" value="Abc" id="secret_key">
   <?php $this->load->view('partials/_navbar')?>
 
   <div class="content-wrapper">

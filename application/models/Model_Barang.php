@@ -32,17 +32,25 @@ Class Model_Barang extends CI_Model{
     public function update()
     {
         $data=[
-            'id_barang' => $this->input->post('id_barang'),
-            'nm_barang'        => $this->input->post('nm_barang'),
-            'stok_barang'  => $this->input->post('stok_barang'),
-            'harga_barang'  => $this->input->post('harga_barang'),
+            'nm_barang' => $this->input->post('nm_barang'),
+            'stok_barang' => $this->input->post('stok_barang'),
+            'harga_barang' => $this->input->post('harga_barang'),
 
          ];
-         $kd_barang=$this->input->post('id_barang');
+         $id_barang=$this->input->post('id_barang');
          $this->db->where('id_barang',$id_barang);
          $this->db->update('tbl_barang',$data);
 
     }
+
+    public function delete()
+    {
+
+        $id_barang = $this->input->post('id_barang');
+        $this->db->where('id_barang',$id_barang);
+        $this->db->delete('tbl_barang');
+
+    }    
 
 }
 ?>
