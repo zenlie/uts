@@ -26,4 +26,3 @@ if (!$authentication) {
     echo json_encode($arrResult);
     exit();
 }
-die;

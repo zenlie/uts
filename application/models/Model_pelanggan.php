@@ -3,7 +3,7 @@ Class Model_pelanggan extends CI_Model{
 
     public function show_pelanggan()
     {
-        $data=$this->db->get('pelanggan');
+        $data=$this->db->get('tbl_pelanggan');
         return $data;
     }
 
@@ -11,16 +11,16 @@ Class Model_pelanggan extends CI_Model{
     {
         $data=[
 
-            'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-            'kelamin'        => $this->input->post('kelamin'),
-            'alamat'         => $this->input->post('alamat'),
-            'no_telpon'      => $this->input->post('no_telpon'),
+            'nm_pelanggan' => $this->input->post('nm_pelanggan'),
+            'notelp_pelanggan'        => $this->input->post('notelp_pelanggan'),
+            'alamat_pelanggan'         => $this->input->post('alamat_pelanggan'),
+
          ];
-         $this->db->insert('pelanggan',$data);
+         $this->db->insert('tbl_pelanggan',$data);
     }
     public function edit($id)
     {
-        $data=$this->db->get_where('pelanggan',array('kode_pelanggan'=>$id));
+        $data=$this->db->get_where('tbl_pelanggan',array('id_pelanggan'=>$id));
         return $data;
     }
 
@@ -28,14 +28,14 @@ Class Model_pelanggan extends CI_Model{
     {
         $data=[
 
-            'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-            'kelamin'        => $this->input->post('kelamin'),
-            'alamat'         => $this->input->post('alamat'),
-            'no_telpon'      => $this->input->post('no_telpon'),
+            'nm_pelanggan' => $this->input->post('nm_pelanggan'),
+            'notelp_pelanggan'        => $this->input->post('notelp_pelanggan'),
+            'alamat_pelanggan'         => $this->input->post('alamat_pelanggan'),
+
          ];
-         $kode_pelanggan=$this->input->post('kode_pelanggan');
-         $this->db->where('kode_pelanggan',$kode_pelanggan);
-         $this->db->update('pelanggan',$data);
+         $kode_pelanggan=$this->input->post('id_pelanggan');
+         $this->db->where('id_pelanggan',$id_pelanggan);
+         $this->db->update('tbl_pelanggan',$data);
 
     }
 

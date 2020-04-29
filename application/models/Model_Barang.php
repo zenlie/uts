@@ -25,23 +25,22 @@ Class Model_Barang extends CI_Model{
     }
     public function edit($id)
     {
-        $data=$this->db->get_where('barang',array('kd_barang'=>$id));
+        $data=$this->db->get_where('tbl_barang',array('id_barang'=>$id));
         return $data;
     }
 
     public function update()
     {
         $data=[
-            'nama_barang' => $this->input->post('nama_barang'),
-            'stok'        => $this->input->post('stok'),
-            'harga_beli'  => $this->input->post('harga_beli'),
-            'harga_jual'  => $this->input->post('harga_jual'),
-            'diskon'      => $this->input->post('diskon'),
-            'keterangan'  => $this->input->post('keterangan')
+            'id_barang' => $this->input->post('id_barang'),
+            'nm_barang'        => $this->input->post('nm_barang'),
+            'stok_barang'  => $this->input->post('stok_barang'),
+            'harga_barang'  => $this->input->post('harga_barang'),
+
          ];
-         $kd_barang=$this->input->post('kd_barang');
-         $this->db->where('kd_barang',$kd_barang);
-         $this->db->update('barang',$data);
+         $kd_barang=$this->input->post('id_barang');
+         $this->db->where('id_barang',$id_barang);
+         $this->db->update('tbl_barang',$data);
 
     }
 
