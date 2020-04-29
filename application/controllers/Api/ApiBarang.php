@@ -61,7 +61,7 @@ Class ApiBarang extends CI_Controller{
                'message' => 'Data Was Updated'
             );
          }
-         echo json_encode($data);
+         echo json_encode($arrResult);
       }
 
      public function delete()
@@ -82,7 +82,7 @@ Class ApiBarang extends CI_Controller{
             );
 
          }
-         echo json_encode($data);
+         echo json_encode($arrResult);
      }
 }
 
