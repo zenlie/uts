@@ -3,12 +3,12 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-Class ApiPelanggan extends CI_Controller{
+Class ApiUser extends CI_Controller{
 
     function __construct() {
         parent::__construct();
         $this->load->helper('authentication');
-        $this->load->Model('Model_pelanggan');
+        $this->load->Model('Model_user');
     }
 
     public function index()
@@ -17,16 +17,16 @@ Class ApiPelanggan extends CI_Controller{
        
        switch ($req) {
           case 'GET':
-               $data = $this->Model_pelanggan->show_pelanggan()->result();
-               if ($this->input->get('id_pelanggan') != '') {
-                  $id_pelanggan = $this->input->get('id_pelanggan');
-                  $data = $this->Model_pelanggan->show_one_pelanggan($id_pelanggan)->result();
+               $data = $this->Model_user->show_user()->result();
+               if ($this->input->get('id_user') != '') {
+                  $id_user = $this->input->get('id_user');
+                  $data = $this->Model_user->show_one_user($id_user)->result();
                }
                echo json_encode($data);
             break;
 
           case 'POST':
-               $data = $this->Model_pelanggan->add();
+               $data = $this->Model_user->add();
 
                http_response_code(500);
                $arrResult = array(
@@ -64,8 +64,8 @@ Class ApiPelanggan extends CI_Controller{
                   'code' => 404,
                   'message' => 'Data Not Found'
                );
-               $barang = $this->Model_pelanggan->show_one_pelanggan($id_pelanggan)->result();
-               $data = $this->Model_pelanggan->update($id_pelanggan, $nm_pelanggan, $stok_pelanggan, $harga_pelanggan);
+               $barang = $this->Model_user->show_one_user($id_user)->result();
+               $data = $this->Model_user->update($id_user, $nm_user, $stok_user, $harga_user, $email_user, $level_user, $sk_user);
                if (count($barang) == 1) {
                   http_response_code(200);
                   $arrResult = array(
@@ -95,9 +95,9 @@ Class ApiPelanggan extends CI_Controller{
                   'code' => 404,
                   'message' => 'Data Not Found'
                );
-               $barang = $this->Model_pelanggan->show_one_pelanggan($id_pelanggan)->result();         
+               $barang = $this->Model_user->show_one_user($id_user)->result();         
                if (count($barang) == 1) {
-                  $data = $this->Model_pelanggan->delete($id_pelanggan);
+                  $data = $this->Model_user->delete($id_user);
                   http_response_code(202);
                   $arrResult = array(
                      'result' => true,

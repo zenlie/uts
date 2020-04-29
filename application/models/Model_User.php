@@ -1,5 +1,5 @@
 <?php
-Class Model_User extends CI_Model{
+Class Model_user extends CI_Model{
 
     public function check_secret_key($secret_key)
     {
@@ -13,43 +13,56 @@ Class Model_User extends CI_Model{
         return $data;
     }
 
-    public function show_one_barang($id)
+    public function show_one_user($id)
     {
-        $data=$this->db->get_where('tbl_barang',array('id_barang'=>$id));
+        $data=$this->db->get_where('tbl_user',array('id_user'=>$id));
         return $data;
     }
 
     public function add()
     {
         $data=[
-            'id_barang' => $this->input->post('id_barang'),
-            'nm_barang'        => $this->input->post('nm_barang'),
-            'stok_barang'  => $this->input->post('stok_barang'),
-            'harga_barang'  => $this->input->post('harga_barang'),
+            'id_user' => $this->input->post('id_user'),
+            'nm_user'        => $this->input->post('nm_user'),
+            'username'  => $this->input->post('username'),
+            'password'  => $this->input->post('password'),
+            'email_user' => $this->input->post('email_user'),
+            'level_user'  => $this->input->post('level_user'),
+            'sk_user'  => $this->input->post('sk_user'),
+
          ];
-         return $this->db->insert('tbl_barang',$data);
+         return $this->db->insert('tbl_user',$data);
     }
     public function edit($id)
     {
-        $data=$this->db->get_where('barang',array('kd_barang'=>$id));
+        $data=$this->db->get_where('tbl_user',array('id_user'=>$id));
         return $data;
     }
 
-    public function update()
+    public function update($id_user, $nm_user, $username, $password, $email_user, $level_user, $sk_user)
     {
         $data=[
-            'nama_barang' => $this->input->post('nama_barang'),
-            'stok'        => $this->input->post('stok'),
-            'harga_beli'  => $this->input->post('harga_beli'),
-            'harga_jual'  => $this->input->post('harga_jual'),
-            'diskon'      => $this->input->post('diskon'),
-            'keterangan'  => $this->input->post('keterangan')
+            'nm_user' => $nm_user,
+            'username' => $username,
+            'password' => $password,
+            'email_user' => $email_user,
+            'level_user' => $level_user,
+            'sk_user' => $sk_user,            
+
          ];
-         $kd_barang=$this->input->post('kd_barang');
-         $this->db->where('kd_barang',$kd_barang);
-         $this->db->update('barang',$data);
+         $this->db->where('id_user',$id_user);
+         return $this->db->update('tbl_user',$data);
 
     }
+
+    public function delete($id_user)
+    {
+
+        $id_user = $id_user;
+        $this->db->where('id_user',$id_user);
+        return $this->db->delete('tbl_user');
+
+    }    
 
 }
 ?>

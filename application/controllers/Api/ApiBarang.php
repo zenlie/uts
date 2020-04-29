@@ -110,20 +110,7 @@ Class ApiBarang extends CI_Controller{
 
              break;
        }
-    }
-
-     public function create()
-     {
-
-     }
-
-      public function update()
-      {
-      }
-
-     public function delete()
-     {
-     }
+   }
 }
 
 ?>
