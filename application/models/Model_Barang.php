@@ -39,7 +39,7 @@ Class Model_Barang extends CI_Model{
          ];
          $id_barang=$this->input->post('id_barang');
          $this->db->where('id_barang',$id_barang);
-         $this->db->update('tbl_barang',$data);
+         return $this->db->update('tbl_barang',$data);
 
     }
 
@@ -48,7 +48,7 @@ Class Model_Barang extends CI_Model{
 
         $id_barang = $this->input->post('id_barang');
         $this->db->where('id_barang',$id_barang);
-        $this->db->delete('tbl_barang');
+        return $this->db->delete('tbl_barang');
 
     }    
 

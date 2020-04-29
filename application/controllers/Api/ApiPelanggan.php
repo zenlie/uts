@@ -23,7 +23,7 @@ Class ApiPelanggan extends CI_Controller{
      {
         $data = $this->Model_pelanggan->add();
         if ($data == 1) {
-        	http_response_code(201);
+        	http_response_code(600);
         }
         echo json_encode($data);
      }
@@ -32,7 +32,7 @@ Class ApiPelanggan extends CI_Controller{
      {
         $data = $this->Model_pelanggan->update();
         if ($data == 1) {
-        	http_response_code(200);
+        	http_response_code(601);
         }
         echo json_encode($data);
      }
@@ -41,7 +41,7 @@ Class ApiPelanggan extends CI_Controller{
      {
         $data = $this->Model_pelanggan->delete();
         if ($data == 1) {
-        	http_response_code(202);
+        	http_response_code(602);
         }
         echo json_encode($data);
      }

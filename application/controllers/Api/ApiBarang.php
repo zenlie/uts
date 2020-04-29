@@ -47,13 +47,14 @@ Class ApiBarang extends CI_Controller{
       public function update()
       {
          $data = $this->Model_barang->update();
-         http_response_code(500);
+         http_response_code(404);
          $arrResult = array(
             'result' => false,
-            'code' => 500,
-            'message' => 'Internal Server Error'
+            'code' => 404,
+            'message' => 'Data Not Found'
          );
-         if ($data == 1) {
+         $barang = $this->Model_barang->show_one_barang($this->input->post('id_barang'))->result();         
+         if (count($barang) == 1) {
             http_response_code(200);
             $arrResult = array(
                'result' => true,
@@ -66,14 +67,15 @@ Class ApiBarang extends CI_Controller{
 
      public function delete()
      {
-         http_response_code(500);
+         http_response_code(404);
          $arrResult = array(
             'result' => false,
-            'code' => 500,
-            'message' => 'Internal Server Error'
+            'code' => 404,
+            'message' => 'Data Not Found'
          );
-         $data = $this->Model_barang->delete();
-         if ($data == 1) {
+         $barang = $this->Model_barang->show_one_barang($this->input->post('id_barang'))->result();         
+         if (count($barang) == 1) {
+             $data = $this->Model_barang->delete();
             http_response_code(202);
             $arrResult = array(
                'result' => true,
