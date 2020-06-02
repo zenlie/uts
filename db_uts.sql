@@ -99,6 +99,9 @@ CREATE TABLE `tbl_user` (
 -- Indexes for dumped tables
 --
 
+INSERT INTO `tbl_user` (`id_user`, `nm_user`, `username`, `password`, `email_user`, `level_user`, `sk_user`) VALUES
+(1, 'Aldy', 'aldy', 'aldy', 'aldy@gmail.com', 'admin', 'Abc');
+
 --
 -- Indeks untuk tabel `tbl_barang`
 --
